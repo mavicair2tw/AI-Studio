@@ -37,8 +37,8 @@
       th, td { padding: 12px; border-bottom: 1px solid #1f2a44; text-align: left; }
       th { background: var(--panel-2); }
       tr:last-child td { border-bottom: none; }
-      .up { color: #ef4444; }   /* positive = green */
-      .down { color: #22c55e; } /* negative = red */
+      .up { color: #ef4444; }   /* positive = red */
+      .down { color: #22c55e; } /* negative = green */
       .flat { color: var(--muted); }
       .muted { color: var(--muted); }
       .chart-wrap {
@@ -57,31 +57,23 @@
         line-height: 1.6;
       }
 
-    
-      .site-link { margin-top: 20px; color: var(--muted); font-size: 13px; }
-      .site-link a{ color:#93c5fd; text-decoration:none; }
-      .site-link a:hover{ text-decoration:underline; }
     </style>
   </head>
   <body>
     <div class="wrap">
       <div class="top-bar">
-        <div class="logo">openai-tw.com</div>
+        <div class="logo">🧭 OpenClaw Market Hub</div>
         <div class="top-tags">
-          <div class="nav-item"><a class="tag" href="/">Home</a><span class="tag-sub">Main Portal</span></div>
-          <div class="nav-item"><a class="tag active" href="/tw/">台股</a><span class="tag-sub">TW Market</span></div>
-          <div class="nav-item"><a class="tag" href="/us/">美股</a><span class="tag-sub">US Market</span></div>
-        <form class="quick-search" action="/chat/" method="get" style="display:flex;gap:8px;align-items:center;">
-          <input name="q" type="text" placeholder="Search keyword..." style="width:220px;max-width:42vw;background:#0f1730;color:#e6edf3;border:1px solid #223055;border-radius:999px;padding:6px 10px;font-size:12px;" />
-          <button type="submit" style="padding:6px 10px;border-radius:999px;border:1px solid #35558d;background:#1a315f;color:#fff;font-size:12px;font-weight:700;cursor:pointer;">Search</button>
-        </form>
+          <div class="nav-item"><a class="tag" href="/stock-report-site/">Home</a><span class="tag-sub">Main Portal</span></div>
+          <div class="nav-item"><a class="tag active" href="/stock-report-site/tw/">台股</a><span class="tag-sub">TW Market</span></div>
+          <div class="nav-item"><a class="tag" href="/stock-report-site/us/">美股</a><span class="tag-sub">US Market</span></div>
         </div>
       </div>
       <h1>台股即時報表（15 分鐘更新）</h1>
       <div class="sub" id="updated">載入中...</div>
       <div class="sub" id="viewCounter">點閱數：--</div>
       <div class="status" id="marketStatus">檢查交易時段中...</div>
-      <div class="sub">顏色規則：<span class="up">紅色 = 正報酬/上漲</span>，<span class="down">綠色 = 負報酬/下跌</span></div>
+      <div class="sub">顏色規則：<span class="up">紅色 = 上漲</span>，<span class="down">綠色 = 下跌</span></div>
 
       <div class="chart-wrap">
         <canvas id="changeChart" height="90"></canvas>
@@ -106,7 +98,6 @@
 
 
 
-      <div class="site-link"><a href="https://openai-tw.com/">openai-tw.com</a></div>
     </div>
 
     <script>
@@ -117,21 +108,36 @@
       const viewCounterEl = document.getElementById('viewCounter');
       if (viewCounterEl) viewCounterEl.textContent = `點閱數：${pageViews}`;
 
+      function normalizeNumber(val){
+        if (typeof val === 'number') return val;
+        if (typeof val === 'string'){
+          const cleaned = val.replace(/,/g,'').replace(/%/g,'').trim();
+          const num = Number(cleaned);
+          if (!Number.isNaN(num)) return num;
+        }
+        return null;
+      }
+
       function cls(v) {
-        if (v > 0) return 'up';
-        if (v < 0) return 'down';
+        const num = normalizeNumber(v);
+        if (num === null) return 'flat';
+        if (num > 0) return 'up';
+        if (num < 0) return 'down';
         return 'flat';
       }
 
       function fmt(v, suffix = '') {
-        if (v === null || v === undefined || Number.isNaN(v)) return '<span class="muted">N/A</span>';
-        return `${v}${suffix}`;
+        const num = normalizeNumber(v);
+        if (num === null) return '<span class="muted">N/A</span>';
+        return `${num.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:2})}${suffix}`;
       }
 
       function fmtSigned(v, suffix = '') {
-        if (v === null || v === undefined || Number.isNaN(v)) return '<span class="muted">N/A</span>';
-        const sign = v > 0 ? '+' : '';
-        return `${sign}${v}${suffix}`;
+        const num = normalizeNumber(v);
+        if (num === null) return '<span class="muted">N/A</span>';
+        const sign = num > 0 ? '+' : '';
+        const formatted = Math.abs(num) < 1000 ? num.toFixed(2).replace(/\.00$/, '') : num.toLocaleString('en-US',{maximumFractionDigits:2});
+        return `${sign}${formatted}${suffix}`;
       }
 
       function twMarketStatus() {
@@ -172,7 +178,7 @@
 
         document.getElementById('summary').innerHTML =
           `【台股摘要】整體氣氛：<b>${tone}</b>（平均漲幅 ${avg.toFixed(2)}% ，上漲 ${up} 檔 / 下跌 ${down} 檔）。<br>` +
-          `強勢：<span class="up">${topUp.label} (${topUp.changePercent}%)</span>；弱勢：<span class="down">${topDown.label} (${topDown.changePercent}%)</span>。<br>` +
+          `強勢：<span class="up">${topUp.label} (${fmtSigned(topUp.changePercent, '%')})</span>；弱勢：<span class="down">${topDown.label} (${fmtSigned(topDown.changePercent, '%')})</span>。<br>` +
           `【投資建議】${action}<br><span class="muted">※ 以上為程式自動摘要，僅供參考，非投資建議。</span>`;
       }
 
@@ -185,13 +191,14 @@
             document.getElementById('marketStatus').textContent = twMarketStatus();
 
             const rows = data.items.map(item => {
-              const c = cls(item.change || 0);
+              const changeClass = cls(item.change || 0);
+              const percentClass = cls(item.changePercent || 0);
               return `
                 <tr>
                   <td>${item.label}</td>
                   <td>${fmt(item.price)}</td>
-                  <td class="${c}">${fmtSigned(item.change)}</td>
-                  <td class="${c}">${fmtSigned(item.changePercent, '%')}</td>
+                  <td><span class="${changeClass}">${fmtSigned(item.change)}</span></td>
+                  <td><span class="${percentClass}">${fmtSigned(item.changePercent, '%')}</span></td>
                   <td>${item.symbol}</td>
                 </tr>
               `;
