@@ -16,6 +16,7 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 ENV_FILE = BASE_DIR / ".env"
 LINE_TOKEN_URL = "https://api.line.me/v2/oauth/accessToken"
 LINE_PUSH_URL = "https://api.line.me/v2/bot/message/push"
+LINE_FOLLOWERS_URL = "https://api.line.me/v2/bot/followers/ids"
 
 
 def load_env() -> None:
@@ -76,6 +77,23 @@ def push_message(token: str, user_id: str, text: str, image_url: str | None) -> 
         raise RuntimeError(f"LINE push connection error: {exc}")
 
 
+def get_follower_ids(token: str) -> list[str]:
+    user_ids: list[str] = []
+    start = None
+    while True:
+        url = LINE_FOLLOWERS_URL if not start else f"{LINE_FOLLOWERS_URL}?start={start}"
+        req = Request(url, headers={
+            "authorization": f"Bearer {token}"
+        })
+        with urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read().decode())
+        user_ids.extend(data.get("userIds", []))
+        start = data.get("next")
+        if not start:
+            break
+    return user_ids
+
+
 def main(argv: list[str]) -> None:
     parser = argparse.ArgumentParser(description="Send a LINE push notification")
     parser.add_argument("text", help="Message text")
@@ -85,13 +103,28 @@ def main(argv: list[str]) -> None:
     load_env()
     channel_id = os.environ.get("LINE_CHANNEL_ID")
     channel_secret = os.environ.get("LINE_CHANNEL_SECRET")
-    user_id = os.environ.get("LINE_USER_ID")
-    if not channel_id or not channel_secret or not user_id:
-        raise SystemExit("Missing LINE_* environment variables")
+    fallback_user = os.environ.get("LINE_USER_ID")
+    if not channel_id or not channel_secret:
+        raise SystemExit("Missing LINE_CHANNEL_ID / LINE_CHANNEL_SECRET")
 
     token = get_access_token(channel_id, channel_secret)
-    push_message(token, user_id, args.text, args.image_url)
-    print("Sent LINE push successfully")
+    targets: list[str] = []
+    if fallback_user:
+        targets.append(fallback_user)
+    try:
+        followers = get_follower_ids(token)
+        for follower in followers:
+            if follower not in targets:
+                targets.append(follower)
+    except Exception as exc:
+        print(f"Warning: failed to fetch LINE followers: {exc}")
+
+    if not targets:
+        raise SystemExit("No LINE recipients available")
+
+    for target in targets:
+        push_message(token, target, args.text, args.image_url)
+    print(f"Sent LINE push to {len(targets)} recipient(s)")
 
 
 if __name__ == "__main__":
