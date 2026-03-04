@@ -187,7 +187,8 @@ jobs:
           git clone git@github.com:$TARGET_REPO.git site-publish
           cd site-publish
 
-          find . -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+          git rm -rf . >/dev/null 2>&1 || true
+          rm -rf ./*
           cp -R ../dist/. .
 
           git add .
