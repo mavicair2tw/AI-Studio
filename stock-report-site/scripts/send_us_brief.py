@@ -51,16 +51,6 @@ def format_stock_line(label: str, item: dict[str, Any]) -> str:
     return f"{label}：{item['price']:.2f}（{item.get('changePercent', 0.0):+.2f}%）"
 
 
-
-def format_combo_line(goog: dict[str, Any], btc: dict[str, Any], gold: dict[str, Any]) -> str:
-    return (
-        "GOOG / BTC / GOLD："
-        f"{goog['price']:.2f}（{goog.get('changePercent', 0.0):+.2f}%） / "
-        f"{btc['price']:.0f}（{btc.get('changePercent', 0.0):+.2f}%） / "
-        f"{gold['price']:.2f}（{gold.get('changePercent', 0.0):+.2f}%）"
-    )
-
-
 def build_summary(sp_item: dict[str, Any]) -> str:
     pct = sp_item.get("changePercent", 0.0)
     if pct >= 0.8:
@@ -111,7 +101,9 @@ def main() -> None:
         format_stock_line('NVDA', nvda_item),
         format_stock_line('AMD', amd_item),
         format_stock_line('TESLA', tsla_item),
-        format_combo_line(goog_item, btc_item, gold_item),
+        format_stock_line('GOOG', goog_item),
+        format_stock_line('BTC', btc_item),
+        format_stock_line('GOLD', gold_item),
         build_summary(sp_item)
     ]
 
