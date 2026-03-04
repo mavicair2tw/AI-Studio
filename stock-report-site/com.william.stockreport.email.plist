@@ -28,6 +28,6 @@
   <string>/Users/mavicair2tw/.openclaw/workspace/stock-report-site/logs/email.err.log</string>
 
   <key>RunAtLoad</key>
-  <true/>
+  <false/>
 </dict>
 </plist>
