@@ -164,14 +164,32 @@ jobs:
             cp -R stock-report-site/public/assets/. dist/assets/
           fi
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
+      - name: Deploy to openai-tw-site
+        env:
+          TARGET_REPO: mavicair2tw/openai-tw-site
+          DEPLOY_KEY: ${{ secrets.OPENAI_TW_SITE_DEPLOY_KEY }}
+        run: |
+          if [ -z "$DEPLOY_KEY" ]; then
+            echo "OPENAI_TW_SITE_DEPLOY_KEY is not set" >&2
+            exit 1
+          fi
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
+          eval "$(ssh-agent -s)"
+          ssh-add <(echo "$DEPLOY_KEY")
+          mkdir -p ~/.ssh
+          touch ~/.ssh/known_hosts
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          git config --global user.name "openai-tw bot"
+          git config --global user.email "deploy@openai-tw.com"
+
+          rm -rf site-publish
+          git clone git@github.com:$TARGET_REPO.git site-publish
+          cd site-publish
+
+          find . -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+          cp -R ../dist/. .
+
+          git add .
+          git commit -m "Deploy site $(date -u +%Y-%m-%dT%H:%M:%SZ)" || exit 0
+          git push origin main
