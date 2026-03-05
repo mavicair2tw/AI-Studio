@@ -17,10 +17,10 @@ def fmt(v, d=2):
 
 def build_report():
     now = datetime.now(tz=TZ)
-    t = yf.Ticker("BTC-USD")
+    ticker = yf.Ticker("BTC-USD")
 
-    hourly = t.history(period="7d", interval="1h", auto_adjust=False)
-    closes = hourly["Close"].dropna() if not hourly.empty and "Close" in hourly else []
+    daily = ticker.history(period="180d", interval="1d", auto_adjust=False)
+    closes = daily["Close"].dropna() if (not daily.empty and "Close" in daily) else []
 
     latest = closes.iloc[-1] if len(closes) else None
     prev = closes.iloc[-2] if len(closes) >= 2 else None
@@ -28,30 +28,34 @@ def build_report():
     change = (latest - prev) if (latest is not None and prev is not None) else None
     change_pct = ((change / prev) * 100) if (change is not None and prev not in (None, 0)) else None
 
-    # last 24 hourly performance rows
-    perf24 = []
-    if len(closes):
-        tail = closes.tail(24)
+    performance = []
+    if len(closes) >= 2:
+        tail = closes.tail(30)
         last_val = None
         for idx, val in tail.items():
-            ch = (val - last_val) if last_val is not None else None
-            chp = ((ch / last_val) * 100) if (ch is not None and last_val not in (None, 0)) else None
-            perf24.append(
+            if last_val is None:
+                last_val = val
+                continue
+            delta = val - last_val
+            pct = (delta / last_val) * 100 if last_val else None
+            ts = idx.tz_convert(TZ) if getattr(idx, "tzinfo", None) else idx.tz_localize(TZ)
+            performance.append(
                 {
-                    "time": idx.tz_convert(TZ).strftime("%m-%d %H:%M") if getattr(idx, "tzinfo", None) else idx.strftime("%m-%d %H:%M"),
+                    "date": ts.strftime("%Y-%m-%d"),
                     "price": fmt(val, 2),
-                    "change": fmt(ch, 2),
-                    "changePercent": fmt(chp, 3),
+                    "change": fmt(delta, 2),
+                    "changePercent": fmt(pct, 3),
                 }
             )
             last_val = val
 
     trend = []
     if len(closes):
-        for idx, val in closes.tail(72).items():
+        for idx, val in closes.tail(90).items():
+            ts = idx.tz_convert(TZ) if getattr(idx, "tzinfo", None) else idx.tz_localize(TZ)
             trend.append(
                 {
-                    "time": idx.tz_convert(TZ).strftime("%m-%d %H:%M") if getattr(idx, "tzinfo", None) else idx.strftime("%m-%d %H:%M"),
+                    "time": ts.strftime("%m-%d"),
                     "close": fmt(val, 2),
                 }
             )
@@ -65,8 +69,14 @@ def build_report():
             "change": fmt(change, 2),
             "changePercent": fmt(change_pct, 3),
         },
-        "trend72h": trend,
-        "performance24h": perf24,
+        "source": {
+            "name": "Yahoo Finance",
+            "provider": "yfinance",
+            "url": "https://finance.yahoo.com/",
+            "interval": "1d",
+        },
+        "trendDaily": trend,
+        "performanceDaily": performance,
     }
 
 
