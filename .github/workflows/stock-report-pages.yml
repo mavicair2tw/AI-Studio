@@ -159,6 +159,11 @@ jobs:
           cp -R stock-report-site/public/prompt-builder/. dist/prompt-builder/
           mkdir -p dist/PromptBuilder
           cp stock-report-site/public/PromptBuilder/index.html dist/PromptBuilder/index.html
+
+          # Token Usage Dashboard
+          mkdir -p dist/token-dashboard
+          cp -R stock-report-site/public/token-dashboard/. dist/token-dashboard/
+
           # Static assets (images, etc.)
           if [ -d stock-report-site/public/assets ]; then
             cp -R stock-report-site/public/assets/. dist/assets/
