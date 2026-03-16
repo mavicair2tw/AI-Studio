@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import time as time_module
 from datetime import datetime, time
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -70,17 +71,30 @@ def is_trading_window(now: datetime) -> bool:
     return market_open <= now.time() <= market_close
 
 
-def fetch_mis_quotes(channels: List[str]) -> Dict[str, dict]:
+def fetch_mis_quotes(channels: List[str], retries: int = 3, backoff_seconds: float = 1.5) -> Dict[str, dict]:
     params = {"ex_ch": "|".join(channels), "json": 1}
-    response = requests.get(MIS_URL, params=params, headers=MIS_HEADERS, timeout=10, verify=False)
-    response.raise_for_status()
-    payload = response.json()
-    quotes = {}
-    for entry in payload.get("msgArray", []):
-        channel = entry.get("ch")
-        if channel:
-            quotes[channel] = entry
-    return quotes
+    last_error = None
+
+    for attempt in range(1, retries + 1):
+        try:
+            response = requests.get(MIS_URL, params=params, headers=MIS_HEADERS, timeout=10, verify=False)
+            response.raise_for_status()
+            payload = response.json()
+            quotes = {}
+            for entry in payload.get("msgArray", []):
+                channel = entry.get("ch")
+                if channel:
+                    quotes[channel] = entry
+            return quotes
+        except (requests.RequestException, ValueError) as exc:
+            last_error = exc
+            if attempt == retries:
+                break
+            sleep_for = backoff_seconds * attempt
+            print(f"TWSE MIS fetch failed (attempt {attempt}/{retries}): {exc}; retrying in {sleep_for:.1f}s")
+            time_module.sleep(sleep_for)
+
+    raise RuntimeError(f"Unable to fetch TWSE MIS quotes after {retries} attempts") from last_error
 
 
 def build_quote(entry: dict | None) -> dict:
@@ -172,12 +186,18 @@ def build_report(now: datetime):
 
 def main():
     now = datetime.now(tz=TZ)
-    report = build_report(now)
-
     base_dir = Path(__file__).resolve().parent.parent
     data_dir = base_dir / "data"
     data_dir.mkdir(parents=True, exist_ok=True)
     out_file = data_dir / "latest.json"
+
+    try:
+        report = build_report(now)
+    except Exception as exc:
+        if out_file.exists():
+            print(f"Warning: failed to refresh TW report ({exc}); keeping existing {out_file}")
+            return
+        raise
 
     with open(out_file, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
