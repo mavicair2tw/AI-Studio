@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11 18:05",
+  "updatedAt": "2026-06-11 23:34",
   "timezone": "Asia/Taipei",
   "storiesZh": [
     {
@@ -55,14 +55,6 @@
     {
       "lang": "en",
       "titleZh": "",
-      "titleEn": "The True Story Behind 'The Exorcist' Is So Disturbing That The Movie Had To Leave The Worst Parts Out - All That's Interesting",
-      "summaryZh": "",
-      "summaryEn": "The True Story Behind 'The Exorcist' Is So Disturbing That The Movie Had To Leave The Worst Parts Out All That's Interesting",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1Td294c0dneC11YnlsY3RxdjlTZnF4QzRPTGIwek92NWh3NTRkN0hUNVFJZm1wVnlTNVlCNmY1RzV5U3E1WkRfYk9UMXN0SGZvVEVyVFpIUnRlUnE1bTRxWlZsM3hDUFpQUDdwbmVHLVhaT29q?oc=5"
-    },
-    {
-      "lang": "en",
-      "titleZh": "",
       "titleEn": "16 Movies Inspired by Real Events You’ll Want to See to Believe - Netflix",
       "summaryZh": "",
       "summaryEn": "16 Movies Inspired by Real Events You’ll Want to See to Believe Netflix",
@@ -83,6 +75,14 @@
       "summaryZh": "",
       "summaryEn": "17 horrific (and hilarious) bad date stories from real-life people that you won’t believe are real Cosmopolitan",
       "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNX1ZUS2xuaF9QY2pFSWJ2ZVVuZ081clJXZWdkNGU0ek54VFd0Q3BoWFRJOUUzWGF3cEozN2ZvMVd1N0FFdkRvTE4xZDIwQzdNN2VYb2Q2MExQczQ4NXdHcEhta1JPWTFBTVdQcUxpMEllaFVaYTlheE1LRjMzM0oyOVBnRkdWQnhId0E?oc=5"
+    },
+    {
+      "lang": "en",
+      "titleZh": "",
+      "titleEn": "The Creepy True Stories Behind 'The Conjuring' Films - All That's Interesting",
+      "summaryZh": "",
+      "summaryEn": "The Creepy True Stories Behind 'The Conjuring' Films All That's Interesting",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9wU0xSdWZ5QkZuRlFGQ0ZlaS1BaFlKMEMxMVI3TDVjaE83VXRzOVpLeWxwdGRzSUc1Tk5oVkhackg0alJSdlROT1I1MU1JR0lONk15N3I3UWN6X1E5aVBxSk1NcGg?oc=5"
     }
   ],
   "stories": [
@@ -137,14 +137,6 @@
     {
       "lang": "en",
       "titleZh": "",
-      "titleEn": "The True Story Behind 'The Exorcist' Is So Disturbing That The Movie Had To Leave The Worst Parts Out - All That's Interesting",
-      "summaryZh": "",
-      "summaryEn": "The True Story Behind 'The Exorcist' Is So Disturbing That The Movie Had To Leave The Worst Parts Out All That's Interesting",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1Td294c0dneC11YnlsY3RxdjlTZnF4QzRPTGIwek92NWh3NTRkN0hUNVFJZm1wVnlTNVlCNmY1RzV5U3E1WkRfYk9UMXN0SGZvVEVyVFpIUnRlUnE1bTRxWlZsM3hDUFpQUDdwbmVHLVhaT29q?oc=5"
-    },
-    {
-      "lang": "en",
-      "titleZh": "",
       "titleEn": "16 Movies Inspired by Real Events You’ll Want to See to Believe - Netflix",
       "summaryZh": "",
       "summaryEn": "16 Movies Inspired by Real Events You’ll Want to See to Believe Netflix",
@@ -165,25 +157,16 @@
       "summaryZh": "",
       "summaryEn": "17 horrific (and hilarious) bad date stories from real-life people that you won’t believe are real Cosmopolitan",
       "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNX1ZUS2xuaF9QY2pFSWJ2ZVVuZ081clJXZWdkNGU0ek54VFd0Q3BoWFRJOUUzWGF3cEozN2ZvMVd1N0FFdkRvTE4xZDIwQzdNN2VYb2Q2MExQczQ4NXdHcEhta1JPWTFBTVdQcUxpMEllaFVaYTlheE1LRjMzM0oyOVBnRkdWQnhId0E?oc=5"
+    },
+    {
+      "lang": "en",
+      "titleZh": "",
+      "titleEn": "The Creepy True Stories Behind 'The Conjuring' Films - All That's Interesting",
+      "summaryZh": "",
+      "summaryEn": "The Creepy True Stories Behind 'The Conjuring' Films All That's Interesting",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9wU0xSdWZ5QkZuRlFGQ0ZlaS1BaFlKMEMxMVI3TDVjaE83VXRzOVpLeWxwdGRzSUc1Tk5oVkhackg0alJSdlROT1I1MU1JR0lONk15N3I3UWN6X1E5aVBxSk1NcGg?oc=5"
     }
   ],
   "ok": true,
-  "errors": [
-    "zh:日常生活 有趣故事: HTTP Error 503: Service Unavailable",
-    "zh:食衣住行 趨勢: HTTP Error 503: Service Unavailable",
-    "zh:教育 新知: HTTP Error 503: Service Unavailable",
-    "zh:科學 發現: HTTP Error 503: Service Unavailable",
-    "zh:哲學 思辨: HTTP Error 503: Service Unavailable",
-    "zh:自然 生態: HTTP Error 503: Service Unavailable",
-    "zh:旅遊 文化: HTTP Error 503: Service Unavailable",
-    "zh:休閒 娛樂: HTTP Error 503: Service Unavailable",
-    "en:daily life interesting stories: HTTP Error 503: Service Unavailable",
-    "en:food fashion housing transport trends: HTTP Error 503: Service Unavailable",
-    "en:education insights: HTTP Error 503: Service Unavailable",
-    "en:science discoveries: HTTP Error 503: Service Unavailable",
-    "en:philosophy ideas: HTTP Error 503: Service Unavailable",
-    "en:nature and ecology: HTTP Error 503: Service Unavailable",
-    "en:travel and culture: HTTP Error 503: Service Unavailable",
-    "en:leisure and entertainment: HTTP Error 503: Service Unavailable"
-  ]
+  "errors": null
 }
