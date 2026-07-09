@@ -1,7 +1,15 @@
 {
-  "updatedAt": "2026-07-09 09:58",
+  "updatedAt": "2026-07-09 17:20",
   "timezone": "Asia/Taipei",
   "storiesZh": [
+    {
+      "lang": "zh",
+      "titleZh": "文藻師資生用AI說故事 啟發學童英語學習力 - 蕃新聞",
+      "titleEn": "",
+      "summaryZh": "文藻師資生用AI說故事 啟發學童英語學習力 蕃新聞",
+      "summaryEn": "",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9Ob2dZWTVVbXd2Vl9BQVJoRXV0VkdxcllTUUdPWFpPY0dNbm9pV2NUMjNRdHVxaXppNVVXVUZfd2tyVzFoUzJISkwxUmZaVDk1ZlE?oc=5"
+    },
     {
       "lang": "zh",
       "titleZh": "佛光山妙法寺「妙法野有趣」三好兒童研習營 三好教育融入戶外學習 - lnanews.com",
@@ -17,14 +25,6 @@
       "summaryZh": "花蓮縣「土水保育說故事宣導活動」陪孩子認識土壤與地下水 中華新聞雲／中華日報",
       "summaryEn": "",
       "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1tdlI2bHpmLVY1cTh1RnlvaW85Y2hLdXQ1a0w3S2lCNUlDM1hsdHhhUlNnenVIZks2elEyTVRieWVPZEpwU3I3TlRaSFVTaHVHaVE?oc=5"
-    },
-    {
-      "lang": "zh",
-      "titleZh": "【好日預告】暑假親子必逛《永續好日子3.0》！兩天11場活動亮點一次看 把永續變有趣 - 倡議家",
-      "titleEn": "",
-      "summaryZh": "【好日預告】暑假親子必逛《永續好日子3.0》！兩天11場活動亮點一次看 把永續變有趣 倡議家",
-      "summaryEn": "",
-      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9SSHhQRmRCZjhGSVQ3SXRmYlRORUI0Xy1palhCZXJpZ1VBREU1ZE9KSExsYTBGZHBfY1h4cWxtTFQxOHNkMW5ubXVUZW1fU01ZTVZlN3psRE1HYjhCN2RJ0gFkQVVfeXFMUFRIYzFkQ1I5eWlpOU9CeE1wVUNIM1FZNW1jRkFucmljLWlkRUQ0RHdHWS1oem9nRVB3SVdxbEhxcnpjZkZVelJnS1hONHhnVDkxTkE0OXpuZUVLSWlwUFFMUnhGLQ?oc=5"
     },
     {
       "lang": "zh",
@@ -88,6 +88,14 @@
   "stories": [
     {
       "lang": "zh",
+      "titleZh": "文藻師資生用AI說故事 啟發學童英語學習力 - 蕃新聞",
+      "titleEn": "",
+      "summaryZh": "文藻師資生用AI說故事 啟發學童英語學習力 蕃新聞",
+      "summaryEn": "",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9Ob2dZWTVVbXd2Vl9BQVJoRXV0VkdxcllTUUdPWFpPY0dNbm9pV2NUMjNRdHVxaXppNVVXVUZfd2tyVzFoUzJISkwxUmZaVDk1ZlE?oc=5"
+    },
+    {
+      "lang": "zh",
       "titleZh": "佛光山妙法寺「妙法野有趣」三好兒童研習營 三好教育融入戶外學習 - lnanews.com",
       "titleEn": "",
       "summaryZh": "佛光山妙法寺「妙法野有趣」三好兒童研習營 三好教育融入戶外學習 lnanews.com",
@@ -101,14 +109,6 @@
       "summaryZh": "花蓮縣「土水保育說故事宣導活動」陪孩子認識土壤與地下水 中華新聞雲／中華日報",
       "summaryEn": "",
       "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1tdlI2bHpmLVY1cTh1RnlvaW85Y2hLdXQ1a0w3S2lCNUlDM1hsdHhhUlNnenVIZks2elEyTVRieWVPZEpwU3I3TlRaSFVTaHVHaVE?oc=5"
-    },
-    {
-      "lang": "zh",
-      "titleZh": "【好日預告】暑假親子必逛《永續好日子3.0》！兩天11場活動亮點一次看 把永續變有趣 - 倡議家",
-      "titleEn": "",
-      "summaryZh": "【好日預告】暑假親子必逛《永續好日子3.0》！兩天11場活動亮點一次看 把永續變有趣 倡議家",
-      "summaryEn": "",
-      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9SSHhQRmRCZjhGSVQ3SXRmYlRORUI0Xy1palhCZXJpZ1VBREU1ZE9KSExsYTBGZHBfY1h4cWxtTFQxOHNkMW5ubXVUZW1fU01ZTVZlN3psRE1HYjhCN2RJ0gFkQVVfeXFMUFRIYzFkQ1I5eWlpOU9CeE1wVUNIM1FZNW1jRkFucmljLWlkRUQ0RHdHWS1oem9nRVB3SVdxbEhxcnpjZkZVelJnS1hONHhnVDkxTkE0OXpuZUVLSWlwUFFMUnhGLQ?oc=5"
     },
     {
       "lang": "zh",
