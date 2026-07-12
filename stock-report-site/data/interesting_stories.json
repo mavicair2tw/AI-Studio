@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-12 09:47",
+  "updatedAt": "2026-07-12 15:59",
   "timezone": "Asia/Taipei",
   "storiesZh": [
     {
@@ -28,11 +28,11 @@
     },
     {
       "lang": "zh",
-      "titleZh": "臺南客話講故事50場熱鬧登場！尞暑假來聽故事 | 勁報 - LINE TODAY",
+      "titleZh": "臺南客話講故事50場熱鬧登場！尞暑假來聽故事 - 勁報",
       "titleEn": "",
-      "summaryZh": "臺南客話講故事50場熱鬧登場！尞暑假來聽故事 | 勁報 LINE TODAY",
+      "summaryZh": "臺南客話講故事50場熱鬧登場！尞暑假來聽故事 勁報",
       "summaryEn": "",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1uSDNQeVpNMElPYlRmTTI4MF9JM0FLV1VLelJaZDRkRUVlNkJjOXNUNnN0SEZUODBOaGRTUGFVUjE4eDU1dU5RVU0zY3JQRnZSOEVUZEpn?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE51ajBhejZNb2cwalN5VjlOM2FvYzVhaFVJR1lBOVZMdmJPNmFnd0JadElFN3l0b0JDV3hqMUxTcUI2LUg0VzJuamtwbms5MnlNMFN0MGZ2bHBDR1BwaHlOZTBnTEJSY1ZVQjhrMFVhYw?oc=5"
     },
     {
       "lang": "zh",
@@ -112,11 +112,11 @@
     },
     {
       "lang": "zh",
-      "titleZh": "臺南客話講故事50場熱鬧登場！尞暑假來聽故事 | 勁報 - LINE TODAY",
+      "titleZh": "臺南客話講故事50場熱鬧登場！尞暑假來聽故事 - 勁報",
       "titleEn": "",
-      "summaryZh": "臺南客話講故事50場熱鬧登場！尞暑假來聽故事 | 勁報 LINE TODAY",
+      "summaryZh": "臺南客話講故事50場熱鬧登場！尞暑假來聽故事 勁報",
       "summaryEn": "",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1uSDNQeVpNMElPYlRmTTI4MF9JM0FLV1VLelJaZDRkRUVlNkJjOXNUNnN0SEZUODBOaGRTUGFVUjE4eDU1dU5RVU0zY3JQRnZSOEVUZEpn?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE51ajBhejZNb2cwalN5VjlOM2FvYzVhaFVJR1lBOVZMdmJPNmFnd0JadElFN3l0b0JDV3hqMUxTcUI2LUg0VzJuamtwbms5MnlNMFN0MGZ2bHBDR1BwaHlOZTBnTEJSY1ZVQjhrMFVhYw?oc=5"
     },
     {
       "lang": "zh",
@@ -168,22 +168,5 @@
     }
   ],
   "ok": true,
-  "errors": [
-    "zh:日常生活 有趣故事: HTTP Error 503: Service Unavailable",
-    "zh:食衣住行 趨勢: HTTP Error 503: Service Unavailable",
-    "zh:教育 新知: HTTP Error 503: Service Unavailable",
-    "zh:科學 發現: HTTP Error 503: Service Unavailable",
-    "zh:哲學 思辨: HTTP Error 503: Service Unavailable",
-    "zh:自然 生態: HTTP Error 503: Service Unavailable",
-    "zh:旅遊 文化: HTTP Error 503: Service Unavailable",
-    "zh:休閒 娛樂: HTTP Error 503: Service Unavailable",
-    "en:daily life interesting stories: HTTP Error 503: Service Unavailable",
-    "en:food fashion housing transport trends: HTTP Error 503: Service Unavailable",
-    "en:education insights: HTTP Error 503: Service Unavailable",
-    "en:science discoveries: HTTP Error 503: Service Unavailable",
-    "en:philosophy ideas: HTTP Error 503: Service Unavailable",
-    "en:nature and ecology: HTTP Error 503: Service Unavailable",
-    "en:travel and culture: HTTP Error 503: Service Unavailable",
-    "en:leisure and entertainment: HTTP Error 503: Service Unavailable"
-  ]
+  "errors": null
 }
